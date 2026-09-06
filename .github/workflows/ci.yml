@@ -74,12 +74,13 @@ jobs:
         run: python scripts/verify_artifacts.py .artifacts/first/*
       - name: Generate SPDX SBOM
         run: |
-          python scripts/generate_sbom.py --output ".artifacts/meridian-storage-object-common-1.0.1.spdx.json" .artifacts/first/*
+          python scripts/generate_sbom.py --output ".artifacts/meridian-storage-object-common-1.0.2.spdx.json" .artifacts/first/*
       - name: Clean-install wheel with released predecessors
         run: |
           python -m venv .artifacts/venv
           WHEEL_PATH=$(find .artifacts/first -name '*.whl' -type f -print -quit)
-          .artifacts/venv/bin/python -m pip install --disable-pip-version-check meridian-storage-core==1.0.0 meridian-storage-semantics==1.0.0 "$WHEEL_PATH"
+          .artifacts/venv/bin/python -m pip install --disable-pip-version-check meridian-storage-core==1.0.1 meridian-storage-semantics==2.0.0 "$WHEEL_PATH"
+          .artifacts/venv/bin/python -m pip check
           cd /tmp
           "$GITHUB_WORKSPACE/.artifacts/venv/bin/python" -I -c 'from meridian_storage.spi.discovery import CATALOG_ENTRY_POINT_GROUP, discover_components; result = discover_components(CATALOG_ENTRY_POINT_GROUP, (), component_id=lambda provider: provider.catalog_name); provider = result.components["object"]; assert len(provider.manifest().operations) == 8 and provider.create_surface().catalog_name == "object"'
       - name: Upload verified artifacts

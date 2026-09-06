@@ -35,7 +35,7 @@ immutability intent, retention intent, and explicit retention enforcement.
 All schemas use JSON Schema Draft 2020-12, reject unknown contract fields, and
 are exercised by valid and invalid conformance fixtures. Object metadata is not
 redefined here: `ObjectMetadata`, `ObjectReference`, and `ObjectProfile` are
-imported from and wire-compatible with `meridian-storage-semantics==1.0.0`.
+imported from and wire-compatible with `meridian-storage-semantics==2.0.0`.
 
 ## Ranges, immutability, retention, and multipart
 

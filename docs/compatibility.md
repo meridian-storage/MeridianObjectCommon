@@ -2,8 +2,8 @@
 
 # Compatibility
 
-Version 1.0.0 requires Python 3.12 or newer and depends exactly on
-`meridian-storage-core==1.0.0` and `meridian-storage-semantics==1.0.0`.
+Version 1.0.2 requires Python 3.12 or newer and depends exactly on
+`meridian-storage-core==1.0.1` and `meridian-storage-semantics==2.0.0`.
 `compatibility.json` records the independently downloaded wheel and source
 distribution SHA-256 values, the Core public-contract commit, the Semantics
 release commit, and the locked design revisions.
@@ -19,3 +19,8 @@ error codes, public exports, operation guarantees, or capability names require
 a versioned contract update and approved design write-back. Additive
 implementation changes that preserve these checked-in ledgers can remain within
 the existing contract version.
+
+The Semantics structured put mode revision does not change Object put: its
+`create_only` flag, payload references, Object operation versions, and wire
+fixtures remain unchanged. Provider adapters must release their own compatible
+dependency metadata before consuming this package with the new predecessor set.

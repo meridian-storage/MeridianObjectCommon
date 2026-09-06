@@ -2,6 +2,12 @@
 
 # Changelog
 
+## 1.0.2
+
+- Consume released Core 1.0.1 and Semantics 2.0.0 through exact dependency pins.
+- Refresh compatibility evidence and CI clean-install inputs while preserving the
+  Object V1 API, wire formats, streaming rules, and shared conformance fixtures.
+
 ## 1.0.1
 
 - Generate signing nonces with an alphabet accepted by the existing opaque-token contract.

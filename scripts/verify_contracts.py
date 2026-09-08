@@ -38,9 +38,9 @@ def fixtures(kind: str, name: str) -> Iterator[Mapping[str, Any]]:
 
 def main() -> None:
     public = load(ROOT / "contracts/public-api/meridian-object-common.v1.json")
-    assert public["version"] == object_common.__version__ == "1.0.2"
-    assert public["core"] == "1.0.1"
-    assert public["semantics"] == "2.0.0"
+    assert public["version"] == object_common.__version__ == "1.0.3"
+    assert public["core"] == "1.1.0"
+    assert public["semantics"] == "2.0.1"
     assert public["exports"] == sorted(object_common.__all__)
     assert public["errorCodes"] == sorted(item.value for item in ObjectErrorCode)
 
@@ -49,19 +49,26 @@ def main() -> None:
     assert project["version"] == object_common.__version__
     assert project["license"] == "Apache-2.0"
     assert project["dependencies"] == [
-        "meridian-storage-core==1.0.1",
-        "meridian-storage-semantics==2.0.0",
+        "meridian-storage-core>=1.0.1,<2",
+        "meridian-storage-semantics>=2.0.1,<3",
     ]
 
     compatibility = load(ROOT / "compatibility.json")
     assert compatibility["version"] == object_common.__version__
-    assert compatibility["core"]["version"] == "1.0.1"
-    assert compatibility["semantics"]["version"] == "2.0.0"
+    assert compatibility["core"]["version"] == "1.1.0"
+    assert compatibility["semantics"]["version"] == "2.0.1"
     assert compatibility["design"] == {
         "catalogsRevision": 121,
         "hldRevision": 114,
         "objectLldRevision": 35,
     }
+
+    lock = (ROOT / "requirements-validation.txt").read_text(encoding="utf-8")
+    for name in ("core", "semantics"):
+        dependency = compatibility[name]
+        assert f"{dependency['distribution']}=={dependency['version']}" in lock
+        assert f"--hash=sha256:{dependency['wheelSha256']}" in lock
+        assert f"--hash=sha256:{dependency['sdistSha256']}" in lock
 
     provider = ObjectCatalogProvider()
     manifest = provider.manifest()

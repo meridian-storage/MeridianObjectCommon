@@ -14,7 +14,7 @@ from pathlib import Path, PurePosixPath
 
 PACKAGE = "meridian_storage/object_common"
 DISTRIBUTION = "meridian-storage-object-common"
-VERSION = "1.0.2"
+VERSION = "1.0.3"
 
 
 def digest(path: Path) -> str:
@@ -66,8 +66,8 @@ def verify_wheel(path: Path) -> dict[str, object]:
         assert metadata["Requires-Python"] == ">=3.12"
         assert metadata["License-Expression"] == "Apache-2.0"
         dependencies = metadata.get_all("Requires-Dist", [])
-        assert "meridian-storage-core==1.0.1" in dependencies
-        assert "meridian-storage-semantics==2.0.0" in dependencies
+        assert "meridian-storage-core<2,>=1.0.1" in dependencies
+        assert "meridian-storage-semantics<3,>=2.0.1" in dependencies
         license_files = [name for name in names if ".dist-info/licenses/" in name]
         assert any(name.endswith("/LICENSE") for name in license_files)
         assert any(name.endswith("/NOTICE") for name in license_files)
@@ -96,6 +96,7 @@ def verify_sdist(path: Path) -> dict[str, object]:
             f"{root}/README.md",
             f"{root}/pyproject.toml",
             f"{root}/compatibility.json",
+            f"{root}/requirements-validation.txt",
             f"{root}/contracts/public-api/meridian-object-common.v1.json",
             f"{root}/src/{PACKAGE}/__init__.py",
             f"{root}/tests/test_conformance.py",

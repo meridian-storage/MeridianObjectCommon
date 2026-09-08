@@ -2,6 +2,15 @@
 
 # Changelog
 
+## 1.0.3 — 2026-09-08
+
+- Replace historical exact dependency recipes with Core `>=1.0.1,<2` and
+  Semantics `>=2.0.1,<3` public API compatibility bounds.
+- Lock release validation to public Core 1.1.0 and Semantics 2.0.1 with artifact
+  hashes; retain exact Object V1 APIs, payloads, fixtures and provider neutrality.
+- Test both Core 1.0.1 and 1.1.0 on Python 3.12–3.14; require normal clean wheel
+  installation, dependency checks and the full installed-wheel regression suite.
+
 ## 1.0.2
 
 - Consume released Core 1.0.1 and Semantics 2.0.0 through exact dependency pins.

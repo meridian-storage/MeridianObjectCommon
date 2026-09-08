@@ -2,7 +2,7 @@
   "$comment": "SPDX-License-Identifier: Apache-2.0",
   "catalog": "object",
   "catalogContractVersion": "1.0.0",
-  "core": "1.0.1",
+  "core": "1.1.0",
   "distribution": "meridian-storage-object-common",
   "entryPoints": {
     "catalogs": {
@@ -133,7 +133,7 @@
   ],
   "payloadReferenceFormat": "meridian.object.payload-reference.v1",
   "python": ">=3.12",
-  "semantics": "2.0.0",
+  "semantics": "2.0.1",
   "signedReferenceFormat": "meridian.object.signed-reference.v1",
-  "version": "1.0.2"
+  "version": "1.0.3"
 }

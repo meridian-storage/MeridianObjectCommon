@@ -49,8 +49,8 @@ def main() -> None:
     assert project["version"] == object_common.__version__
     assert project["license"] == "Apache-2.0"
     assert project["dependencies"] == [
-        "meridian-storage-core>=1.0.1,<2",
-        "meridian-storage-semantics>=2.0.1,<3",
+        "meridian-storage-core>=1,<2",
+        "meridian-storage-semantics>=2,<3",
     ]
 
     compatibility = load(ROOT / "compatibility.json")

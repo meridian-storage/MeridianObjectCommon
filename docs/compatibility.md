@@ -3,8 +3,8 @@
 # Compatibility
 
 Version 1.0.3 requires Python 3.12 or newer. Its installation requirements are
-`meridian-storage-core>=1.0.1,<2` and
-`meridian-storage-semantics>=2.0.1,<3`.
+`meridian-storage-core>=1,<2` and
+`meridian-storage-semantics>=2,<3`.
 
 Core's V1 Expression, Operation, ResourceRef, Catalog provider/discovery,
 CapabilityRequirement and error APIs are the consumed boundary. The lower

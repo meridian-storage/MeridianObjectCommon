@@ -12,7 +12,7 @@ a reusable downstream Adapter conformance runner.
 
 The distribution contains exactly one Python package,
 `meridian_storage.object_common`. It consumes the released
-`meridian-storage-core>=1.0.1,<2` and `meridian-storage-semantics>=2.0.1,<3`
+`meridian-storage-core>=1,<2` and `meridian-storage-semantics>=2,<3`
 distributions. It contains no provider implementation, cloud credential,
 physical locator, provisioning, state, ACL, migration, recovery, or lifecycle
 policy.
